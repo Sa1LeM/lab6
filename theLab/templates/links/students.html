@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html> 
+<html lang="en">
+  <head> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
+</head>
+
+  <body>
+    <div class="page">
+      <h1>Add new person:</h1>
+      <form action="{% url 'sqllab:students' %}" method="post">
+        {% csrf_token %}
+        {{ form}}
+        <button type="submit">Submit</button>
+      </form>
+      <br>
+      <ul>
+        {% for Student in students %}
+          <li><a href="{% url 'sqllab:details'  Student.studentID%}">{{Student}}</a></li>
+        {% endfor %}
+      </ul>
+      <a href="{% url 'sqllab:courses' %}">see courses</a>
+
+    </div>
+  </body>
+ <html>
+

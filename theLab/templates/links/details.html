@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html> 
+<html lang="en">
+  <head> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
+</head>
+
+
+  <body>
+    <div class="page">
+        <h3>Student: {{student}}</h3>
+        <h4>Student ID: {{student.studentID}}</h4>
+        <h5>GPA: {{student.studentGPA}}</h5>
+        <h6>Phone number: {{student.studentPhoneNumber}}</h6>
+        
+        <form method="POST" >
+          {% csrf_token %}
+          <label for="course">Add Course:</label>
+          <select name="course" id="course">
+          {% for course in notRegisteredCourses %}
+              <option value="{{ course.courseID }}">{{ course.courseID }}</option>
+          {% endfor %}
+          </select>
+          <input type="submit" value="Add">
+            </form>
+
+           
+        <br>
+        <ul>
+          {% for xx in course %}
+            <li>{{xx}}</li>
+          {% endfor %}
+        </ul>
+        <br>
+        <a href="{% url 'sqllab:courses' %}">Add Course</a>
+        <p></p>
+        <a href="{% url 'sqllab:students' %}">Add Student</a>
+        
+        
+    </div>
+  </body>
+ <html>
+
