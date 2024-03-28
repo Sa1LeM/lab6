@@ -8,7 +8,7 @@
 
   <body>
     <div class="page">
-      <h1>Add new person:</h1>
+      <h1>Add a new Student:</h1>
       <form action="{% url 'sqllab:students' %}" method="post">
         {% csrf_token %}
         {{ form}}
